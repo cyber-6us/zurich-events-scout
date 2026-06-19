@@ -1,0 +1,31 @@
+{
+  "name": "Zurich/Luzern/Zug Weekly Events Scout",
+  "routine_id": "trig_017V7XEmfxEpvQBcPCBdMSz8",
+  "manage_url": "https://claude.ai/code/routines/trig_017V7XEmfxEpvQBcPCBdMSz8",
+  "schedule": "Every Sunday at 18:00 Europe/Zurich (16:00 UTC in summer CEST, 17:00 local in winter CET)",
+  "cron_expression": "0 16 * * 0",
+  "model": "claude-sonnet-4-6",
+  "notify_email": "gustavowen@gmail.com",
+  "locations": ["Zurich", "Luzern", "Zug"],
+  "categories": {
+    "comedy": "Famous English-speaking stand-up comedians with international recognition",
+    "megastars": "Globally A-list music artists (household names worldwide)",
+    "nancy_ajram": "Any Nancy Ajram appearance in Switzerland",
+    "classical": "World-class classical soloists, orchestras, and ballet companies"
+  },
+  "mcp_connections": [
+    {
+      "service": "Gmail",
+      "purpose": "Send weekly summary email"
+    },
+    {
+      "service": "Google Drive",
+      "purpose": "Persist zurich-events-tracker.json to track new vs previously flagged events across weeks"
+    }
+  ],
+  "persistence": {
+    "tracker_file": "zurich-events-tracker.json",
+    "storage": "Google Drive",
+    "description": "JSON array of all previously found events. Used each week to classify events as NEW vs PREVIOUSLY FLAGGED and to sort the email accordingly."
+  }
+}
