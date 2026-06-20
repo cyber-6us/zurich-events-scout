@@ -1,31 +1,21 @@
 {
   "name": "Zurich/Luzern/Zug Weekly Events Scout",
-  "routine_id": "trig_017V7XEmfxEpvQBcPCBdMSz8",
-  "manage_url": "https://claude.ai/code/routines/trig_017V7XEmfxEpvQBcPCBdMSz8",
-  "schedule": "Every Sunday at 18:00 Europe/Zurich (16:00 UTC in summer CEST, 17:00 local in winter CET)",
-  "cron_expression": "0 16 * * 0",
-  "model": "claude-sonnet-4-6",
-  "notify_email": "gustavowen@gmail.com",
-  "locations": ["Zurich", "Luzern", "Zug"],
+  "execution": "local — Windows Task Scheduler on user's machine",
+  "run_script": "run_scout.ps1",
+  "schedule": "Every Sunday at 18:00 Europe/Zurich",
+  "cloud_routine_id": "trig_017V7XEmfxEpvQBcPCBdMSz8",
+  "cloud_routine_note": "disabled — replaced by local execution",
   "categories": {
-    "comedy": "Famous English-speaking stand-up comedians with international recognition",
-    "megastars": "Globally A-list music artists (household names worldwide)",
-    "nancy_ajram": "Any Nancy Ajram appearance in Switzerland",
-    "classical": "World-class classical soloists, orchestras, and ballet companies"
+    "comedy": "Famous English-speaking stand-up comedians — Zurich, Luzern, Zug",
+    "megastars": "Globally A-list music artists (household names worldwide) — Zurich, Luzern, Zug",
+    "nancy_ajram": "Any Nancy Ajram appearance anywhere in Europe (Switzerland flagged)",
+    "classical": "World-class classical soloists, orchestras, and ballet companies — Zurich, Luzern, Zug",
+    "gogol_bordello": "Any Gogol Bordello appearance anywhere in Europe (Switzerland flagged)",
+    "art_exhibitions": "Major art exhibitions at significant museums — Zurich, Luzern, Zug, Basel, Bern, Winterthur, Aarau, Schaffhausen"
   },
-  "mcp_connections": [
-    {
-      "service": "Gmail",
-      "purpose": "Send weekly summary email"
-    },
-    {
-      "service": "Google Drive",
-      "purpose": "Persist zurich-events-tracker.json to track new vs previously flagged events across weeks"
-    }
-  ],
+  "email_send_method": "Python smtplib via smtp.gmail.com:587 (runs locally, no cloud blocking)",
   "persistence": {
     "tracker_file": "zurich-events-tracker.json",
-    "storage": "Google Drive",
-    "description": "JSON array of all previously found events. Used each week to classify events as NEW vs PREVIOUSLY FLAGGED and to sort the email accordingly."
+    "storage": "local file in this directory"
   }
 }
