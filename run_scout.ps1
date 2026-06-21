@@ -7,7 +7,7 @@ $Stamp   = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
 Add-Content $LogFile "`n[$Stamp] === Starting Zurich Events Scout ==="
 
-# Step 1: Run research — searches web, updates zurich-events-tracker.json
+# Step 1: Run research - searches web, updates zurich-events-tracker.json
 Add-Content $LogFile "[$Stamp] Research phase starting (may take 20-30 min)"
 Get-Content "$Dir\research_prompt.md" -Raw | claude --print --allowed-tools "WebSearch,WebFetch,Read,Write"
 $ResearchExit = $LASTEXITCODE
@@ -20,5 +20,5 @@ if ($ResearchExit -eq 0) {
     $SendExit = $LASTEXITCODE
     Add-Content $LogFile "[$Stamp] Send finished (exit $SendExit)"
 } else {
-    Add-Content $LogFile "[$Stamp] Research failed — skipping email send"
+    Add-Content $LogFile "[$Stamp] Research failed - skipping email send"
 }
